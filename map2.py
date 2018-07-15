@@ -20,7 +20,8 @@ elev = list(data['ELEV'])
 fg = folium.FeatureGroup(name='My Feature Group')
 
 for lt, ln, el in zip(lat, lon, elev):
-	fg.add_child(folium.Marker(location=[lt, ln], popup=str(el) + ' m', icon=folium.Icon(color=elevation_color_status(el))))
+	fg.add_child(folium.CircleMarker(location=[lt, ln], popup=str(el) + ' m', 
+		fill=True, fill_color=elevation_color_status(el), fill_opacity='0.7', color='grey'))
 
 webmap.add_child(fg)
 webmap.save('map2.html')
